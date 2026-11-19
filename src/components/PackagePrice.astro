@@ -1,0 +1,58 @@
+---
+import { copy, type Locale } from '../lib/copy';
+import { currencies, defaultCurrencies, exchangeDate, exchangeSource, offer, packagePrice } from '../lib/site';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = copy[locale];
+const currency = defaultCurrencies[locale];
+const prices = Object.fromEntries(currencies.map(code => [code, packagePrice(locale, code)]));
+const price = prices[currency]!;
+const rateDate = new Intl.DateTimeFormat(locale, { dateStyle: 'medium', timeZone: 'UTC' }).format(new Date(exchangeDate));
+---
+<section class="package-price" id="pricing" data-prices={JSON.stringify(prices)} data-base-currency={offer.currency}>
+  <div class="package-price-heading">
+    <h2>{t.pricing[0]}</h2>
+    <span class="currency-picker" data-currency-picker hidden>
+      <select aria-label={t.currencyLabel} data-currency>
+        {currencies.map(code => <option value={code} selected={code === currency}>{code}</option>)}
+      </select>
+    </span>
+  </div>
+  <div class="price-card" aria-live="polite" aria-atomic="true">
+    <strong data-total>{price.total}</strong>
+    <dl>
+      <div><dt>{t.pricing[1]}</dt><dd data-start>{price.start}</dd></div>
+      <div><dt>{t.pricing[2]}</dt><dd data-completion>{price.completion}</dd></div>
+    </dl>
+    <p class="exchange-note" data-exchange-note hidden={currency === offer.currency}>
+      {t.exchangeNote} <a href={exchangeSource}><time datetime={exchangeDate}>{rateDate}</time></a>
+    </p>
+  </div>
+</section>
+
+<script>
+  import type { Currency, packagePrice } from '../lib/site';
+  const section = document.querySelector<HTMLElement>('#pricing[data-prices]');
+  const picker = section?.querySelector<HTMLElement>('[data-currency-picker]');
+  const select = section?.querySelector<HTMLSelectElement>('[data-currency]');
+  const total = section?.querySelector('[data-total]');
+  const start = section?.querySelector('[data-start]');
+  const completion = section?.querySelector('[data-completion]');
+  const note = section?.querySelector<HTMLElement>('[data-exchange-note]');
+  if (section?.dataset.prices && picker && select && total && start && completion && note) {
+    const prices = JSON.parse(section.dataset.prices) as Record<Currency, ReturnType<typeof packagePrice>>;
+    const update = () => {
+      const currency = select.value as Currency;
+      const price = prices[currency];
+      if (!price) return;
+      total.textContent = price.total;
+      start.textContent = price.start;
+      completion.textContent = price.completion;
+      note.hidden = currency === section.dataset.baseCurrency;
+    };
+    select.addEventListener('change', update);
+    update();
+    picker.hidden = false;
+  }
+</script>

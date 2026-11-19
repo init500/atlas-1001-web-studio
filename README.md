@@ -9,7 +9,7 @@ Use Node 24 and run `npm ci`, `npm run check` and `npm run build`. Run `npm run 
 ## Editing the site
 
 - Edit localized marketing and promo copy in `src/lib/copy.ts`. Add a matching dictionary with the same keys and add its code to the locale list to enable another language.
-- Edit the offer and confirmed contact links in `src/lib/site.ts`. The finishing payment is calculated from the total and starting payment.
+- Edit the offer and confirmed contact links in `src/lib/site.ts`. The finishing payment is calculated from the total and starting payment. The site starts with USD in English, TRY in Turkish and GEL in Georgian. Update the dated GEL-per-unit values in the same file from the [National Bank of Georgia](https://nbg.gov.ge/en/monetary-policy/currency) to refresh the approximate USD and TRY display.
 - Add public client work only with documented permission. The responsive specimen is original studio artwork.
 - Keep prose and labels free of em dashes, en dashes and short line ornaments.
 

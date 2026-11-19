@@ -1,7 +1,8 @@
 ---
 import { copy, locales, type Locale } from '../lib/copy';
-import { base, brand, contacts, formatPrice, home, offer, origin } from '../lib/site';
+import { base, brand, contacts, home, origin } from '../lib/site';
 import Wordmark from './Wordmark.astro';
+import PackagePrice from './PackagePrice.astro';
 import '../styles/studio.css';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
@@ -59,16 +60,7 @@ const navIds = ['services', 'process', 'pricing', 'contact'];
               {t.included.map(item => <li><span class="included-check" aria-hidden="true">✓</span><span>{item}</span></li>)}
             </ul>
           </div>
-          <section class="package-price" id="pricing">
-            <h2>{t.pricing[0]}</h2>
-            <div class="price-card">
-              <strong>{formatPrice(offer.total, locale)}</strong>
-              <dl>
-                <div><dt>{t.pricing[1]}</dt><dd>{formatPrice(offer.start, locale)}</dd></div>
-                <div><dt>{t.pricing[2]}</dt><dd>{formatPrice(offer.total - offer.start, locale)}</dd></div>
-              </dl>
-            </div>
-          </section>
+          <PackagePrice locale={locale} />
         </div>
       </section>
       <section class="showcase" aria-labelledby="showcase">

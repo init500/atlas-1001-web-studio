@@ -4,7 +4,7 @@ type Copy = {
   headline: [string, string]; intro: string; includedTitle: string; included: readonly string[];
   why: [string, string]; process: string; steps: [string, string][];
   showcase: [string, string]; specimen: [string, string];
-  pricing: [string, string, string]; contact: [string, string, string];
+  pricing: [string, string, string]; currencyLabel: string; exchangeNote: string; contact: [string, string, string];
   promo: [string, string, string]; skip: string; missing: [string, string];
 };
 
@@ -45,6 +45,8 @@ export const copy = {
     showcase: ['ერთი დიზაინი, სხვადასხვა ეკრანი', 'სტუდიის მიერ შექმნილი ნიმუში აჩვენებს, როგორ ერგება ერთსა და იმავე გვერდს ფართო და ვიწრო ეკრანი.'],
     specimen: ['ნიმუში', 'საიტის ორი ვერსია, დესკტოპისა და ტელეფონისთვის'],
     pricing: ['საწყისი ვებსაიტის პაკეტი', 'დაწყებისას', 'დასრულებისას'],
+    currencyLabel: 'ვალუტა',
+    exchangeNote: 'მიახლოებითი თანხები. კურსის თარიღი',
     contact: ['მოგვიყევით თქვენი პროექტის შესახებ', 'საუბრისთვის მოამზადეთ სასურველი გვერდების სია, ენები და გაშვების თარიღი, თუ უკვე გაქვთ შერჩეული.', 'საკონტაქტო არხები ჯერ არ გამოქვეყნებულა.'],
     promo: ['გჭირდებათ ვებსაიტი?', 'ვებდიზაინი, SEO და ჰოსტინგი.', 'გაეცანით სერვისებს'],
     skip: 'შინაარსზე გადასვლა',
@@ -86,6 +88,8 @@ export const copy = {
     showcase: ['One design, different screens', 'This studio design sample shows how the same page adapts to a wide display and a phone.'],
     specimen: ['Design sample', 'The same website on a desktop and a phone'],
     pricing: ['Starter website package', 'To begin', 'On completion'],
+    currencyLabel: 'Currency',
+    exchangeNote: 'Estimated amounts. Rate date',
     contact: ['Tell us about your project', 'For an initial discussion, gather the pages and languages you need and any launch date you have in mind.', 'Contact channels are pending publication.'],
     promo: ['Need a professional website?', 'Custom design, responsive websites, SEO and hosting support.', 'Explore our services'],
     skip: 'Skip to content',
@@ -127,6 +131,8 @@ export const copy = {
     showcase: ['Tek tasarım, farklı ekranlar', 'Bu stüdyo örneği, aynı sayfanın geniş ekranda ve telefonda nasıl göründüğünü gösteriyor.'],
     specimen: ['Tasarım örneği', 'Aynı web sitesinin bilgisayar ve telefon görünümleri'],
     pricing: ['Başlangıç web sitesi paketi', 'Başlangıçta', 'Teslimde'],
+    currencyLabel: 'Para birimi',
+    exchangeNote: 'Yaklaşık tutarlar. Kur tarihi',
     contact: ['Projenizi bize anlatın', 'İlk görüşme için istediğiniz sayfaları, dilleri ve varsa hedef yayın tarihini belirleyebilirsiniz.', 'İletişim kanalları henüz yayımlanmadı.'],
     promo: ['Profesyonel bir web sitesine mi ihtiyacınız var?', 'Özel tasarım, mobil uyum, SEO ve hosting desteği.', 'Hizmetleri keşfedin'],
     skip: 'İçeriğe geç',
