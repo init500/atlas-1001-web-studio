@@ -1,12 +1,13 @@
 ---
-import { brand, home } from '../lib/site';
-import { copy } from '../lib/copy';
+import { brand, defaultLocale, home } from '../lib/site';
+import { copy, locales } from '../lib/copy';
+const locale = defaultLocale;
 ---
 <!doctype html>
-<html lang="ka">
+<html lang={locale}>
   <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="robots" content="noindex" /><title>404 | {brand}</title></head>
   <body>
-    <main><h1>404. {copy.ka.missing[0]}</h1><p><a href={home('ka')}>{copy.ka.missing[1]}</a></p><p lang="en"><a href={home('en')}>English</a></p></main>
+    <main><h1>404. {copy[locale].missing[0]}</h1><p><a href={home(locale)}>{copy[locale].missing[1]}</a></p>{locales.filter(lang => lang !== locale).map(lang => <p lang={lang}><a href={home(lang)} hreflang={lang}>{copy[lang].name}</a></p>)}</main>
   </body>
 </html>
 <style>

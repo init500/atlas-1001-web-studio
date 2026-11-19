@@ -2,7 +2,7 @@
 import StudioPage from '../../components/StudioPage.astro';
 import { locales, type Locale } from '../../lib/copy';
 export function getStaticPaths() {
-  return locales.filter(locale => locale !== 'ka').map(locale => ({ params: { locale }, props: { locale } }));
+  return locales.map(locale => ({ params: { locale }, props: { locale } }));
 }
 const { locale } = Astro.props as { locale: Locale };
 ---

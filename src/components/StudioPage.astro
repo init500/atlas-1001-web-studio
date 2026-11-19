@@ -30,8 +30,8 @@ const navIds = ['services', 'process', 'pricing', 'contact'];
     <header class="header">
       <div class="wrap header-inner">
         <Wordmark href={url} />
-        <nav class="section-links" aria-label={t.nav[0]}>{t.nav.map((label, i) => <a href={'#' + navIds[i]}>{label}</a>)}</nav>
-        <nav class="languages" aria-label="Language">
+        <nav class="section-links" aria-label={t.navLabel}>{t.nav.map((label, i) => <a href={'#' + navIds[i]}>{label}</a>)}</nav>
+        <nav class="languages" aria-label={t.languageLabel}>
           {locales.map(lang => <a href={home(lang)} hreflang={lang} lang={lang} aria-current={locale === lang ? 'page' : undefined} aria-label={copy[lang].name}>{lang.toUpperCase()}</a>)}
         </nav>
       </div>
@@ -52,8 +52,24 @@ const navIds = ['services', 'process', 'pricing', 'contact'];
         </div>
       </section>
       <section class="wrap section" id="services">
-        <h2>{t.nav[0]}</h2>
-        <div class="service-grid">{t.services.map(([title, detail]) => <article><h3>{title}</h3><p>{detail}</p></article>)}</div>
+        <div class="package-grid">
+          <div>
+            <h2>{t.includedTitle}</h2>
+            <ul class="included-list" role="list">
+              {t.included.map(item => <li><span class="included-check" aria-hidden="true">✓</span><span>{item}</span></li>)}
+            </ul>
+          </div>
+          <section class="package-price" id="pricing">
+            <h2>{t.pricing[0]}</h2>
+            <div class="price-card">
+              <strong>{formatPrice(offer.total, locale)}</strong>
+              <dl>
+                <div><dt>{t.pricing[1]}</dt><dd>{formatPrice(offer.start, locale)}</dd></div>
+                <div><dt>{t.pricing[2]}</dt><dd>{formatPrice(offer.total - offer.start, locale)}</dd></div>
+              </dl>
+            </div>
+          </section>
+        </div>
       </section>
       <section class="showcase" aria-labelledby="showcase">
         <div class="wrap showcase-grid">
@@ -67,18 +83,6 @@ const navIds = ['services', 'process', 'pricing', 'contact'];
       <section class="wrap section process" id="process">
         <div><h2>{t.process}</h2><h3>{t.why[0]}</h3><p>{t.why[1]}</p></div>
         <ol>{t.steps.map(([title, detail]) => <li><h3>{title}</h3><p>{detail}</p></li>)}</ol>
-      </section>
-      <section class="price-section" id="pricing">
-        <div class="wrap price-grid">
-          <div><h2>{t.pricing[0]}</h2><p>{t.pricing[1]}</p></div>
-          <div class="price-card">
-            <strong>{formatPrice(offer.total, locale)}</strong>
-            <dl>
-              <div><dt>{t.pricing[2]}</dt><dd>{formatPrice(offer.start, locale)}</dd></div>
-              <div><dt>{t.pricing[3]}</dt><dd>{formatPrice(offer.total - offer.start, locale)}</dd></div>
-            </dl>
-          </div>
-        </div>
       </section>
       <section class="wrap section contact" id="contact">
         <h2>{t.contact[0]}</h2>

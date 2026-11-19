@@ -1,6 +1,9 @@
+import type { Locale } from './copy';
+
 export const brand = 'Atlas 1001 Web Studio';
 export const base = '/atlas-1001-web-studio/';
 export const origin = 'https://init500.github.io';
+export const defaultLocale = 'en';
 
 export const offer = { total: 600, start: 200, currency: 'GEL' } as const;
 export const formatPrice = (amount: number, locale: string) =>
@@ -10,6 +13,6 @@ type ContactChannel = { label: string; href: `mailto:${string}` | `tel:${string}
 // Add only confirmed studio contact channels.
 export const contacts: readonly ContactChannel[] = [];
 
-export function home(locale: string) {
-  return locale === 'ka' ? base : base + locale + '/';
+export function home(locale: Locale) {
+  return locale === defaultLocale ? base : base + locale + '/';
 }
