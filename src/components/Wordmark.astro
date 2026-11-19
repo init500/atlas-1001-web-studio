@@ -1,0 +1,9 @@
+---
+import { brand } from '../lib/site';
+interface Props { href: string }
+const { href } = Astro.props;
+---
+<a class="wordmark" href={href} aria-label={brand}>
+  <span class="brand-icon" aria-hidden="true">A</span>
+  <span aria-hidden="true"><strong>ATLAS 1001</strong><small>WEB STUDIO</small></span>
+</a>

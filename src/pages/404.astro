@@ -1,0 +1,16 @@
+---
+import { brand, home } from '../lib/site';
+import { copy } from '../lib/copy';
+---
+<!doctype html>
+<html lang="ka">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="robots" content="noindex" /><title>404 | {brand}</title></head>
+  <body>
+    <main><h1>404. {copy.ka.missing[0]}</h1><p><a href={home('ka')}>{copy.ka.missing[1]}</a></p><p lang="en"><a href={home('en')}>English</a></p></main>
+  </body>
+</html>
+<style>
+  :global(body) { margin: 0; background: #15221b; color: #fff; font: 1rem/1.5 system-ui, sans-serif; }
+  main { max-width: 48rem; margin: auto; padding: 4rem 1.5rem; }
+  a { color: #ddff9a; }
+</style>
