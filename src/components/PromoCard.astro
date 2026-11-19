@@ -14,25 +14,123 @@ const [title, description, link] = copy[locale].promo;
     <title>{brand}</title>
   </head>
   <body>
-    <main>
-      <p class="brand">{brand}</p>
+    <main class="promo">
+      <p class="wordmark">
+        <span class="monogram" aria-hidden="true">A</span>
+        <span class="brand">
+          <strong>Atlas 1001</strong>
+          <span>Web Studio</span>
+        </span>
+      </p>
       <h1>{title}</h1>
-      <p>{description}</p>
-      <a href={home(locale) + '#services'} target="_blank" rel="noopener noreferrer">{link}</a>
+      <p class="description">{description}</p>
+      <a class="services" href={home(locale) + '#services'} target="_blank" rel="noopener noreferrer">
+        <span>{link}</span><span aria-hidden="true">→</span>
+      </a>
     </main>
     <script is:inline>
-      if (parent !== window) parent.postMessage('atlas-1001-promo-ready', '*');
+      if (parent !== window) {
+        const card = document.querySelector('.promo');
+        const resize = () => parent.postMessage({
+          type: 'atlas-1001-promo-size',
+          height: Math.ceil(card.getBoundingClientRect().height),
+        }, '*');
+        parent.postMessage('atlas-1001-promo-ready', '*');
+        resize();
+        if ('ResizeObserver' in window) new ResizeObserver(resize).observe(card);
+      }
     </script>
   </body>
 </html>
 <style>
   :global(html) { color-scheme: light; }
-  :global(body) { margin: 0; font-family: system-ui, sans-serif; }
-  main { background: #15221b; color: #eff5ed; box-sizing: border-box; padding: 1rem; min-height: 100vh; }
-  h1, p { margin: 0 0 .4rem; }
-  .brand { color: #d9fc8d; font-size: .875rem; font-weight: 700; }
-  h1 { font-size: 1.125rem; line-height: 1.3; }
-  p { font-size: 1rem; line-height: 1.4; }
-  a { display: inline-flex; align-items: center; min-height: 44px; color: #ddff9a; font-weight: 700; text-underline-offset: .2em; }
-  a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  :global(body) { margin: 0; background: transparent; font-family: system-ui, sans-serif; }
+  .promo {
+    --serif: Georgia, 'Times New Roman', serif;
+    position: relative;
+    isolation: isolate;
+    box-sizing: border-box;
+    overflow: hidden;
+    min-block-size: 15.5rem;
+    padding: clamp(1.18rem, 6vw, 3.6rem);
+    border: 1px solid #8f694b;
+    border-radius: clamp(1.15rem, 3vw, 2.1rem);
+    color: #fff8ef;
+    background:
+      radial-gradient(ellipse at 95% 0, #9468456b 0%, transparent 42%),
+      radial-gradient(ellipse at 4% 90%, #55402b 0%, transparent 49%),
+      linear-gradient(145deg, #302218, #453226 49%, #261b16 100%);
+  }
+  .promo:lang(ka) { --serif: Sylfaen, Georgia, serif; }
+  .promo::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(129deg, #fff2d002 0 1px, transparent 1px 5px);
+  }
+  .promo::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    inline-size: 88%;
+    aspect-ratio: 2.5;
+    inset-inline-start: 49%;
+    inset-block-start: 84%;
+    transform: rotate(-24deg);
+    border: 1px solid #e1ad56a6;
+    border-radius: 50%;
+    box-shadow: 0 -.5rem 2.3rem #f7bb6347;
+    background: radial-gradient(ellipse at 42% 0%, #ffd9956b, transparent 19%), #2a1e17;
+  }
+  .wordmark { display: flex; align-items: center; gap: clamp(.7rem, 3.5vw, 2rem); margin: 0 0 clamp(1.25rem, 5.8vw, 3.25rem); }
+  .monogram {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    inline-size: clamp(2.65rem, 10vw, 5.5rem);
+    aspect-ratio: 1;
+    border: clamp(1px, .26vw, 3px) solid #d8a655;
+    border-radius: 25%;
+    background: #281e19;
+    color: #f7dca8;
+    font: 500 clamp(1.7rem, 7vw, 3.75rem)/1 Georgia, serif;
+  }
+  .brand { border-inline-start: 1px solid #b9915f; padding-inline-start: clamp(.7rem, 3.5vw, 2rem); }
+  .brand strong { display: block; margin-bottom: .15em; font: 500 clamp(1.65rem, 6.2vw, 3.6rem)/1 Georgia, serif; letter-spacing: -.04em; }
+  .brand > span { display: block; color: #f6d7a3; font-size: clamp(.675rem, 2.6vw, 1.4rem); letter-spacing: .24em; line-height: 1.2; text-transform: uppercase; }
+  h1 { margin: 0; font: 600 clamp(1.55rem, 5.9vw, 3.75rem)/1.1 var(--serif); letter-spacing: -.026em; overflow-wrap: anywhere; }
+  .description { max-width: 43ch; margin: clamp(.6rem, 2vw, 1.1rem) 0 0; color: #f3e8dd; font-size: clamp(1rem, 3.45vw, 2rem); line-height: 1.45; }
+  .services {
+    display: inline-flex;
+    box-sizing: border-box;
+    min-block-size: 50px;
+    max-inline-size: 100%;
+    align-items: center;
+    gap: clamp(.6rem, 3vw, 1.45rem);
+    margin-block-start: clamp(1.2rem, 5vw, 3.15rem);
+    padding: clamp(.65rem, 1.8vw, 1.12rem) clamp(.9rem, 5vw, 3rem);
+    border: 1px solid #ebc27d;
+    border-radius: 999px;
+    color: #2e1b0e;
+    background: linear-gradient(168deg, #ffe1a4 0%, #e0a94e 100%);
+    font: 600 clamp(.94rem, 3.7vw, 2rem)/1.12 var(--serif);
+    text-decoration: none;
+  }
+  .services span:last-child { font-family: system-ui, sans-serif; }
+  .services:hover { filter: brightness(1.08); }
+  a:focus-visible { outline: 2px solid #fff1cf; outline-offset: 4px; }
+  @media (max-height: 215px) {
+    .promo { min-block-size: 0; padding: .62rem .75rem; border-radius: .75rem; }
+    .wordmark { gap: .5rem; margin-bottom: .5rem; }
+    .monogram { inline-size: 1.925rem; font-size: 1.15rem; }
+    .brand { padding-inline-start: .5rem; }
+    .brand strong { font-size: 1.15rem; margin-bottom: .05em; }
+    .brand > span { font-size: .57rem; }
+    h1 { font-size: 1.125rem; }
+    .description { margin-top: .25rem; font-size: .875rem; line-height: 1.3; }
+    .services { min-block-size: 44px; margin-block-start: .35rem; padding-inline: .75rem; font-size: .9rem; }
+  }
 </style>

@@ -15,4 +15,4 @@ Use Node 24 and run `npm ci`, `npm run check` and `npm run build`. Run `npm run 
 
 ## Shared promotion
 
-The Georgian card remains at `/atlas-1001-web-studio/embed/`. The explicit locales are `embed/en/`, `embed/ka/` and `embed/tr/`. These are independent documents with inline styles and no outside dependencies. They send a fixed readiness message to the immediate parent. Preserve that message and the compact card size when editing the embed. Linked factory 404 pages pick up copy, style and destination updates as soon as Pages serves the changed card.
+The Georgian card remains at `/atlas-1001-web-studio/embed/`. The explicit locales are `embed/en/`, `embed/ka/` and `embed/tr/`. These are independent documents with inline styles and no outside dependencies. They send the existing readiness message and report the card height to the immediate parent. Keep the compact presentation for hosts with a fixed frame height. The dark card artwork uses CSS gradients and system fonts. Linked factory 404 pages pick up copy, style and destination updates as soon as Pages serves the changed card.
