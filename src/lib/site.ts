@@ -27,10 +27,6 @@ export function packagePrice(locale: Locale, currency: Currency) {
   return { total: format.format(total), start: format.format(start), completion: format.format(total - start) };
 }
 
-type ContactChannel = { label: string; href: `mailto:${string}` | `tel:${string}` | `https://${string}` };
-// Add only confirmed studio contact channels.
-export const contacts: readonly ContactChannel[] = [];
-
 export function home(locale: Locale) {
   return locale === defaultLocale ? base : base + locale + '/';
 }

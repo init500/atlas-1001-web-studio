@@ -4,7 +4,7 @@ type Copy = {
   headline: [string, string]; intro: string; includedTitle: string; included: readonly string[];
   why: [string, string]; process: string; steps: [string, string][];
   showcase: [string, string]; specimen: [string, string];
-  pricing: [string, string, string]; currencyLabel: string; exchangeNote: string; contact: [string, string, string];
+  pricing: [string, string, string]; currencyLabel: string; exchangeNote: string; contact: [string, string, string]; contactLabels: Record<'email' | 'phone' | 'whatsapp', string>;
   promo: [string, string, string]; skip: string; missing: [string, string];
 };
 
@@ -48,6 +48,7 @@ export const copy = {
     currencyLabel: 'ვალუტა',
     exchangeNote: 'მიახლოებითი თანხები. კურსის თარიღი',
     contact: ['მოგვიყევით თქვენი პროექტის შესახებ', 'საუბრისთვის მოამზადეთ სასურველი გვერდების სია, ენები და გაშვების თარიღი, თუ უკვე გაქვთ შერჩეული.', 'საკონტაქტო არხები ჯერ არ გამოქვეყნებულა.'],
+    contactLabels: { email: 'ელფოსტა', phone: 'ტელეფონი', whatsapp: 'WhatsApp' },
     promo: ['გჭირდებათ ვებსაიტი?', 'ვებდიზაინი, SEO და ჰოსტინგი.', 'გაეცანით სერვისებს'],
     skip: 'შინაარსზე გადასვლა',
     missing: ['გვერდი ვერ მოიძებნა', 'მთავარ გვერდზე დაბრუნება'],
@@ -91,6 +92,7 @@ export const copy = {
     currencyLabel: 'Currency',
     exchangeNote: 'Estimated amounts. Rate date',
     contact: ['Tell us about your project', 'For an initial discussion, gather the pages and languages you need and any launch date you have in mind.', 'Contact channels are pending publication.'],
+    contactLabels: { email: 'Email', phone: 'Phone', whatsapp: 'WhatsApp' },
     promo: ['Need a professional website?', 'Custom design, responsive websites, SEO and hosting support.', 'Explore our services'],
     skip: 'Skip to content',
     missing: ['Page not found', 'Back to the homepage'],
@@ -134,6 +136,7 @@ export const copy = {
     currencyLabel: 'Para birimi',
     exchangeNote: 'Yaklaşık tutarlar. Kur tarihi',
     contact: ['Projenizi bize anlatın', 'İlk görüşme için istediğiniz sayfaları, dilleri ve varsa hedef yayın tarihini belirleyebilirsiniz.', 'İletişim kanalları henüz yayımlanmadı.'],
+    contactLabels: { email: 'E-posta', phone: 'Telefon', whatsapp: 'WhatsApp' },
     promo: ['Profesyonel bir web sitesine mi ihtiyacınız var?', 'Özel tasarım, mobil uyum, SEO ve hosting desteği.', 'Hizmetleri keşfedin'],
     skip: 'İçeriğe geç',
     missing: ['Sayfa bulunamadı', 'Ana sayfaya dön'],
