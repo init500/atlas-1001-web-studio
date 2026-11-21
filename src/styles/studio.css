@@ -92,6 +92,10 @@ html[lang="ka"] h1 { overflow-wrap: anywhere; font-size: clamp(1.9rem, 11.4cqi, 
 .price-card dd { margin: 0; font-weight: 700; text-align: end; }
 .exchange-note { margin-top: .65rem; color: #344d2d; font-size: .875rem; }
 .contact p { max-width: 56ch; }
+.contact-links { list-style: none; padding: 0; margin: 1.25rem 0 0; }
+.contact-links li { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem 1rem; }
+.contact-links li + li { margin-top: .65rem; }
+.contact-address { overflow-wrap: anywhere; }
 .contact .contact-status { margin-top: 1rem; }
 .footer { background: #121b16; color: #f4f7ef; }
 .footer .wrap { padding-block: 1.25rem; flex-wrap: wrap; }

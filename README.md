@@ -15,7 +15,7 @@ Use Node 24 and run `npm ci`, `npm run check` and `npm run build`. Run `npm run 
 
 ## Studio contact settings
 
-Configure confirmed public channels in `src/config/contact.json`. Keep each unavailable field set to `null`.
+The official studio inbox is `atlas1001_web@protonmail.com`. The Contact section displays the address with a localized email button in English, Georgian and Turkish. Configure public channels in `src/config/contact.json`. Leave phone and WhatsApp set to `null` until confirmed.
 
 - `email` accepts the studio inbox address.
 - `phone` accepts the studio's international telephone number with a leading plus and country code.
